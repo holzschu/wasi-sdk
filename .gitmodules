@@ -4,7 +4,7 @@
 	branch = release/9.x
 [submodule "src/wasi-libc"]
 	path = src/wasi-libc
-	url = https://github.com/CraneStation/wasi-libc
+	url = https://github.com/holzschu/wasi-libc
 [submodule "src/config"]
 	path = src/config
 	url = https://git.savannah.gnu.org/git/config.git
