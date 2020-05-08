@@ -13,7 +13,7 @@ git submodules to pull in the upstream Clang and LLVM tree, as well as the
 wasi-libc tree.
 
 The libc portion of this SDK is the
-[wasi-libc](https://github.com/WebAssembly/wasi-libc).
+[wasi-libc](https://github.com/holzschu/wasi-libc).
 
 Upstream Clang and LLVM (from 8.0 onwards) can compile for WASI out of the box,
 and WebAssembly support is included in them by default. So, all that's done here
@@ -24,12 +24,16 @@ One could also use a standard Clang installation, build a sysroot from the
 sources mentioned above, and compile with
 "--target=wasm32-wasi --sysroot=/path/to/sysroot".
 
-## Install
+This fork differs from the original repository; it has been tailored for use with [a-Shell](https://github.com/holzschu/a-Shell). Functions that are part of the standard libc are working as usual. Functions that require interaction with the system (getenv, setenv, getcwd, chdir, mkstemp, system...) are transferred to iOS. 
 
-A typical installation from the release binaries might look like the following:
+To download, use: 
 ```shell script
-wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-[VERSION]/wasi-sdk-[VERSION]-linux.tar.gz
-tar xvf wasi-sdk-[VERSION]-linux.tar.gz
+git clone --recurse-submodules https://github.com/holzschu/wasi-sdk.git
+```
+
+To compile, type: 
+```shell script
+env PREFIX=[PATH_FOR_INSTALL]/wasi-sdk/opt/ make
 ```
 
 ## Use
