@@ -38,19 +38,20 @@ env PREFIX=[PATH_FOR_INSTALL]/wasi-sdk/opt/ make
 
 Use the clang installed in the wasi-sdk directory:
 ```shell script
-CC="[WASI_SDK_PATH]/bin/clang --sysroot=[WASI_SDK_PATH]/share/wasi-sysroot"
+export WASI_SDK_PATH=`pwd`/wasi-sdk-${WASI_VERSION_FULL}
+CC="${WASI_SDK_PATH}/bin/clang --sysroot=${WASI_SDK_PATH}/share/wasi-sysroot"
 $CC foo.c -o foo.wasm
 ```
-Note: `[WASI_SDK_PATH]/share/wasi-sysroot` contains the WASI-specific includes/libraries/etc. The `--sysroot=...` option
+Note: `${WASI_SDK_PATH}/share/wasi-sysroot` contains the WASI-specific includes/libraries/etc. The `--sysroot=...` option
 is not necessary if `WASI_SDK_PATH` is `/opt/wasi-sdk`.
 
 ## Notes for Autoconf
 
-Upstream autoconf now
-[recognizes WASI](http://lists.gnu.org/archive/html/config-patches/2019-04/msg00001.html).
+[Autoconf](https://www.gnu.org/software/autoconf/autoconf.html) 2.70 now
+[recognizes WASI](https://git.savannah.gnu.org/gitweb/?p=autoconf.git;a=blob;f=build-aux/config.sub;h=19c9553b1825cafb182115513bc628e0ee801bd0;hb=97fbc5c184acc6fa591ad094eae86917f03459fa#l1723).
 
 For convenience when building packages that aren't yet updated, updated
-config.sub and config.guess files are installed at share/misc/config.\*
+config.sub and config.guess files are installed at `share/misc/config.*`
 in the install directory.
 
 ## Notable Limitations
