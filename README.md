@@ -29,9 +29,9 @@ To download, use:
 git clone --recurse-submodules https://github.com/holzschu/wasi-sdk.git
 ```
 
-To compile, type: 
+To compile, first edit src/llvm-project/clang/CMakeLists.txt and comment lines 296 to 316 (the 20 lines adter `set(CUDA_ARCH_FLAGS "sm_35")`, then type: 
 ```shell script
-env PREFIX=[PATH_FOR_INSTALL]/wasi-sdk/opt/ make
+env PREFIX=/opt/ make
 ```
 
 ## Use
